@@ -1,5 +1,5 @@
 {% load static %}
-{%static 'images' as baseUrl %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,18 +11,6 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Noto+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        
-        <!--- test css-->
-        <style>
-            .parallelogram {
-                width: 200px;
-                height: 100px;
-                transform: skew(20deg);
-                background: #00BFFF;
-                text-align: center;
-            }
-        </style>
-        <!--- test css-->
     </head>
     <body>
         
@@ -53,13 +41,13 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="./faq.html">F.A.Q</a>
+                            <a class="nav-link" href="rooms">TRooms</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">contacts</a>
                         </li>
                         <li class="nav-item book d-flex align-items-center">
-                            <a class="nav-link" href="#">login</a>
+                            <a class="nav-link" href="account/login">login</a>
                         </li>
                     </ul>
                 </div>
@@ -101,39 +89,34 @@
             <div class="st-rec"></div>
             <div class="rd-rec"></div>
         </header>
-        <div class="about lobster-font-family">
+        
+        <div class="contact main-font-family text-center">
             <div class="container">
-                <h2 class="text-center text-capitalize"></h2>
-                <img src="{% static 'imgs/shape.png' %}">
-                <h2 class="text-capitalize" id="room">rooms & suits</h2>
-                <!--rooms-->
-
-                {% for rtype in rtypes%}
-
+                <h2 id="contact">registration</h2>
                 <div class="row">
-                    <div class="col-lg-4 col-12">
-                        <div class="img"></div>
-                    </div>
-                    <div class="col-lg-8 col-12">
-                        <div class="block">
-                            <div>
-                                <img src="{% static 'imgs/shape.png' %}">
-                                <span><strong>${{rtype.price}}/hr</strong></span>&nbsp;
-                                {% if rtype.offer%}
-                                <span class="parallelogram">Special offer</span>
-                                {%endif%}
-                                <h5>{{rtype.name}}</h5>
-                                <p>{{rtype.desc}}</p>
-                                <button><a href="#" class="text-capitalize">Read more</a></button>
-                            </div>
+                    <div class="col-6">
+                        <div class="contact-form">
+                            <form action="register" method="POST">
+                                {%csrf_token%}
+                                <input type="text" name="first_name" placeholder="First Name">
+                                <input type="text" name="last_name" placeholder="Last Name">
+                                <input type="text" name="user_name" placeholder="User Name">
+                                <input type="email" name="email" placeholder="Email">
+                                <input type="password" name="password1" placeholder="Password">
+                                <input type="password" n ame="password2" placeholder="Confirm Password">
+                                <input type="submit" value="submit">
+                            </form>
                         </div>
                     </div>
+                    <div class="col-6">
+                        <h2 class="text-right">Book Your Holiday Best for relaxed retreats and cultural encounters</h2>
+                        <img src="{% static 'imgs/shape.png' %}">
+                    </div>
                 </div>
-                {% endfor %}
-
             </div>
+            <div></div>
         </div>
-        <!--END_rooms-->
+        
         <footer class="noto-font-family">
             <div class="overlay">
                 <div class="container">
@@ -142,9 +125,9 @@
                             <h3>Useful links</h3>
                             <ul class="text-capitalize">
                                 <li><a href="#">Home</a></li>
-                                <li><a href="./about.html">About</a></li>
-                                <li><a href="./romms.html">Rooms</a></li>
-                                <li><a href="./faq.html">F.A.Q</a></li>
+                                <li><a href="about">About</a></li>
+                                <li><a href="rooms">Rooms</a></li>
+                                <li><a href="faq">F.A.Q</a></li>
                                 <li><a href="#">Contacts</a></li>
                             </ul>
                         </div>
