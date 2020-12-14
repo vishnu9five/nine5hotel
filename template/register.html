@@ -99,11 +99,11 @@
                             <form action="register" method="POST">
                                 {%csrf_token%}
                                 <input type="text" name="first_name" placeholder="First Name">
-                                <input type="text" name="last_name" placeholder="Last Name">
-                                <input type="text" name="user_name" placeholder="User Name">
-                                <input type="email" name="email" placeholder="Email">
+                                <input type="text" name="last_name" placeholder="Last Name">{{massage_username}}
+                                <input type="text" name="username" placeholder="User Name">{{massage_email}}
+                                <input type="email" name="email" placeholder="Email"><b style = "color:rgb(247, 245, 245);">{{massage_password}}</b>
                                 <input type="password" name="password1" placeholder="Password">
-                                <input type="password" n ame="password2" placeholder="Confirm Password">
+                                <input type="password" name="password2" placeholder="Confirm Password">
                                 <input type="submit" value="submit">
                             </form>
                         </div>
