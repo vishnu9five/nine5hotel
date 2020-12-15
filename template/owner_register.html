@@ -46,14 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">contacts</a>
                         </li>
-                        {% if user.is_authenticated%}
-                        <li class="nav-item book d-flex align-items-center">
-                            <a class="nav-link" href="account/logout">Hi&nbsp;{{user.first_name}}</a>
-                        {%else%}
                         <li class="nav-item book d-flex align-items-center">
                             <a class="nav-link" href="account/login">login</a>
                         </li>
-                        {%endif%}
                     </ul>
                 </div>
             </div>
@@ -95,108 +90,24 @@
             <div class="rd-rec"></div>
         </header>
         
-        <div class="about lobster-font-family">
-            <div class="container">
-                <h2 class="text-center text-capitalize">About 9Fivehotel</h2>
-                <img src="{% static 'imgs/shape.png' %}">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <h4>A best place to enjoy your life</h4>
-                        <p>9Fivehotel is committed towards building an organization centred on the highest standards of transparency and corporate governance with significant investment in continually improving our governance framework</p>
-                        <button><a href="#">Read more</a></button>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                        <div class="img"></div>
-                    </div>
-                </div>
-                <h2 class="text-capitalize" id="room">special offer</h2>
-                <div class="row">
-                    <div class="col-lg-4 col-12">
-                        <div class="img"></div>
-                    </div>
-                    <div class="col-lg-8 col-12">
-                        <div class="block">
-                            <div>
-                                <img src="{% static 'imgs/shape.png' %}">
-                                <strong>$405</strong>
-                                <h5>luxury rooms</h5>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                                <button><a href="#" class="text-capitalize">Read more</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="gallery lobster-font-family" id="blog">
-            <div class="container">
-                <h2 class="text-calitalize text-center">best vacation ever book on your fingertips</h2>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="pic-one"><h4>Relaxed swimming</h4></div>
-                        <div class="pic-two"><h4>Spacious Accommodtion</h4></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="pic-three active"><h4>Yoga Wellness</h4></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="pic-four"><h4>Romantic dinner</h4></div>
-                        <div class="pic-five"><h4>Apa & Wellness</h4></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="slider main-font-family">
-            <h2 class="text-center text-capitalize main-font-family">what our clients say</h2>
-          <div id="slideToNext" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#slideToNext" data-slide-to="0" class="active"></li>
-              <li data-target="#slideToNext" data-slide-to="1"></li>
-              <li data-target="#slideToNext" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="carousel-caption d-block">
-                    <img src="{% static 'imgs/pic7.png' %}">
-                  <h5>jone due</h5>
-                  <p>It is a long established fact that a reader wil
-l be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="carousel-caption d-block">
-                    <img src="{% static 'imgs/pic7.png' %}">
-                  <h5>jone due</h5>
-                  <p>It is a long established fact that a reader wil
-l be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="carousel-caption d-block">
-                    <img src="{% static 'imgs/pic7.png' %}">
-                  <h5>jone due</h5>
-                  <p>It is a long established fact that a reader wil
-l be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div class="contact main-font-family text-center">
             <div class="container">
-                <h2 id="contact">Get in touch</h2>
+                <h2 id="contact">registration</h2>
                 <div class="row">
                     <div class="col-6">
                         <div class="contact-form">
-                            <form>
-                                <input type="text" placeholder="Name">
-                                <input type="email" placeholder="Email">
-                                <input type="text" placeholder="Phone">
-                                <textarea placeholder="Message"></textarea>
+                            <form action="owner_register" method="POST">
+                                {%csrf_token%}
+                                <input type="text" name="first_name" placeholder="First Name">
+                                <input type="text" name="last_name" placeholder="Last Name"><b style = "color:rgb(247, 245, 245);">{{massage_username}}</b>
+                                <input type="text" name="username" placeholder="User Name"><b style = "color:rgb(247, 245, 245);">{{massage_email}}</b>
+                                <input type="email" name="email" placeholder="Email"><b style = "color:rgb(247, 245, 245);">{{massage_password}}</b>
+                                <input type="password" name="password1" placeholder="Password">
+                                <input type="password" name="password2" placeholder="Confirm Password">
                                 <input type="submit" value="submit">
+                                {% if massage%}
+                                <script>alert("contact customer care number for account activation")</script>
+                                {% endif %}
                             </form>
                         </div>
                     </div>

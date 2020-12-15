@@ -11,14 +11,23 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Noto+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        
+
         <!--- test css-->
         <style>
             .parallelogram {
-                width: 200px;
-                height: 100px;
+                position: absolute;
+                top: 10%;
+                left: 53%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                width: 100px;
+                height: 50px;
                 transform: skew(20deg);
                 background: #00BFFF;
+                font-size: 20px;
+                padding: 10px 2px;
+                border: none;
+                border-radius: 5px;
                 text-align: center;
             }
         </style>
@@ -118,13 +127,13 @@
                         <div class="block">
                             <div>
                                 <img src="{% static 'imgs/shape.png' %}">
-                                <span><strong>${{rtype.price}}/hr</strong></span>&nbsp;
+                                <span><strong>₹{{rtype.price}}/hr</strong></span>&nbsp;
                                 {% if rtype.offer%}
                                 <span class="parallelogram">Special offer</span>
                                 {%endif%}
                                 <h5>{{rtype.name}}</h5>
                                 <p>{{rtype.desc}}</p>
-                                <button><a href="#" class="text-capitalize">Read more</a></button>
+                                <button><a href="/product?sku={{rtype.id}}" class="text-capitalize">Read more</a></button>
                             </div>
                         </div>
                     </div>
